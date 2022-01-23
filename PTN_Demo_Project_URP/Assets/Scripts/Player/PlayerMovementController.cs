@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovementController : MonoBehaviour
 {
     [SerializeField]
-    PlayerData playerData;
+    CharacterData playerData;
 
     private PlayerInputController playerInputController;
 

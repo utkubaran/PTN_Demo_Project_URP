@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class OpponentMovementController : MonoBehaviour
 {
+    [SerializeField]
+    private CharacterData opponentData;
+
     private NavMeshAgent agent;
 
     private OpponentAnimationController animationController;
@@ -23,7 +26,7 @@ public class OpponentMovementController : MonoBehaviour
         finalPoint = GameObject.FindGameObjectWithTag("Finish Point").transform;
         agent?.SetDestination(finalPoint.position);
         agent.speed = 5f;
-        animationController.CurrentState = OpponentAnimationController.OpponentState.Walking;
+        // animationController.CurrentState = OpponentAnimationController.OpponentState.Walking;
         
     }
 }
