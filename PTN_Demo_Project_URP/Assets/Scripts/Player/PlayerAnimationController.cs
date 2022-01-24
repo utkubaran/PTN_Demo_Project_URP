@@ -10,7 +10,6 @@ public class PlayerAnimationController : MonoBehaviour
     public enum CharacterState { Idle, Walking }
 
     private CharacterState currentState = CharacterState.Idle;
-
     public CharacterState CurrentState { set { currentState = value; } }
 
     private void Awake()

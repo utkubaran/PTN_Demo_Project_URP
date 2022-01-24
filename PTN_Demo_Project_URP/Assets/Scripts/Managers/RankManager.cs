@@ -64,5 +64,6 @@ public class RankManager : MonoBehaviour
         playerRanking = participants.IndexOf(player) + 1;
         EventManager.OnPlayerRankUpdated?.Invoke(playerRanking);
         timeRemaining = rankTimer;
+        Debug.Log(playerRanking);
     }
 }
