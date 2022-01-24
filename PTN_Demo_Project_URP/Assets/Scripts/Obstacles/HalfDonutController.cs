@@ -35,7 +35,7 @@ public class HalfDonutController : MonoBehaviour
     private void MoveStick()
     {
         Debug.Log("I worked!");
-        movingStick.position = Vector3.MoveTowards(movingStick.position, Vector3.left * 5f, movementSpeed * Time.deltaTime);
+        // movingStick.position = Vector3.MoveTowards(movingStick.position, Vector3.left * 5f, movementSpeed * Time.deltaTime);
     }
 
     private void CheckTimer()

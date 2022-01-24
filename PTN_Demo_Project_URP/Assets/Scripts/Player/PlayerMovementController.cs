@@ -7,6 +7,8 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField]
     CharacterData playerData;
 
+    private CharacterController characterController;
+
     private PlayerInputController playerInputController;
 
     private PlayerAnimationController playerAnimationController;
@@ -35,6 +37,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Awake()
     {
+        characterController = GetComponent<CharacterController>();
         playerInputController = GetComponent<PlayerInputController>();
         playerAnimationController = GetComponent<PlayerAnimationController>();
     }
@@ -62,6 +65,7 @@ public class PlayerMovementController : MonoBehaviour
 
         if (movementDirection.magnitude >= 0.1f && isPlaying)
         {
+            // characterController.Move(movementDirection.normalized * Time.deltaTime * movementSpeed);
             transform.position += movementDirection.normalized * movementSpeed * Time.deltaTime;
             playerAnimationController.CurrentState = PlayerAnimationController.CharacterState.Walking;
         }
