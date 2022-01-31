@@ -7,7 +7,7 @@ TagManager:
   - Opponent
   - Respawn Point
   - Obstacle
-  - Finish Point
+  - Finish Line
   layers:
   - Default
   - TransparentFX
@@ -15,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
-  - Opponent
+  - 
+  - 
   - Obstacle
   - 
   - 

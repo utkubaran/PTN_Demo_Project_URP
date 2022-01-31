@@ -46,7 +46,6 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 3
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -429,7 +428,6 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 3
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -828,6 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b799915eed1e04795130728f748ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opponentData: {fileID: 0}
 --- !u!195 &5908364921623914127
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -837,7 +836,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5908364921623914131}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 1.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
