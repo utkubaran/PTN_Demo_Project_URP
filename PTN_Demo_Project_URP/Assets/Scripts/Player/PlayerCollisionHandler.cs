@@ -43,10 +43,27 @@ public class PlayerCollisionHandler : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         bool isObstacle = other.gameObject.GetComponent<Obstacle>();
+        bool isRotatingPlatform = other.gameObject.GetComponent<RotatingPlatformController>();
+
         
-        if (!isObstacle) return;
-        
-        StartCoroutine(Respawn());
+        if (isObstacle)
+        {
+            StartCoroutine(Respawn());
+        }
+        else if (isRotatingPlatform)
+        {
+            Debug.Log("worksssss!");
+            this.transform.parent = other.transform;
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        bool isRotatingPlatform = other.gameObject.GetComponent<RotatingPlatformController>();
+
+        if (!isRotatingPlatform) return;
+
+        this.transform.parent = null;
     }
 
     private IEnumerator Respawn()
