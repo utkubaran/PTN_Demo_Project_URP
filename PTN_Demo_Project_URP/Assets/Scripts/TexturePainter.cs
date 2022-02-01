@@ -31,7 +31,7 @@ public class TexturePainter : MonoBehaviour
     [SerializeField]
     private int _brushSize;
 
-    private int paintedPixel;
+    private int paintedPixel, oldRayX, oldRayY;
 
     private void OnValidate()
     {
@@ -64,8 +64,14 @@ public class TexturePainter : MonoBehaviour
             {
                 int rayX = (int)(hit.textureCoord.x * textureSize);
                 int rayY = (int)(hit.textureCoord.y * textureSize);
-                // DrawQuad(rayX, rayY);
-                DrawCircle(rayX, rayY);
+
+                if ( oldRayX != rayX || oldRayY != rayY)
+                {
+                    // DrawQuad(rayX, rayY);
+                    DrawCircle(rayX, rayY);
+                    oldRayX = rayX;
+                    oldRayY = rayY;
+                }
 
                 texture.Apply();
                 // if (texture.GetPixel(rayX, rayY) == Color.red)
@@ -99,14 +105,16 @@ public class TexturePainter : MonoBehaviour
                 {
                     int pixelX = rayX + x - _brushSize / 2;
                     int pixelY = rayY + y - _brushSize / 2;
-                    
-                    Color oldColor = texture.GetPixel(pixelX, pixelY);
-                    Color resultColor = Color.Lerp(oldColor, _color, _color.a);
 
-                    texture.SetPixel(rayX + x - _brushSize / 2, rayY + y - _brushSize / 2, resultColor);
+                    if (pixelX >= 0 && pixelX < textureSize && pixelY >= 0 &&  pixelY < textureSize)
+                    {
+                        Color oldColor = texture.GetPixel(pixelX, pixelY);
+                        Color resultColor = Color.Lerp(oldColor, _color, _color.a);
+
+                        texture.SetPixel(rayX + x - _brushSize / 2, rayY + y - _brushSize / 2, resultColor);
+                    }
                 }
             }
         }
     }
-
 }

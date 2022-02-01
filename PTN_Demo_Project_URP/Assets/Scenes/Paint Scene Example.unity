@@ -426,7 +426,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 9f1908e74bc84004895b1eb380f12b28, type: 2}
   _camera: {fileID: 25355967}
   _collider: {fileID: 69786853}
-  _color: {r: 0.754717, g: 0, b: 0, a: 0.39215687}
+  _color: {r: 0.754717, g: 0, b: 0, a: 1}
   _brushSize: 48
 --- !u!4 &1012897171
 Transform:
