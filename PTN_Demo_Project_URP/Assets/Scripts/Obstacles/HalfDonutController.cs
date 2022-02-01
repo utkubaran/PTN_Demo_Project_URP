@@ -11,7 +11,7 @@ public class HalfDonutController : MonoBehaviour
     [SerializeField]
     private float movementDistance;
 
-    private float movementSpeed = 100f, timer, timeRemaining;
+    private float timer, timeRemaining;
 
     private bool isTimeDone;
 

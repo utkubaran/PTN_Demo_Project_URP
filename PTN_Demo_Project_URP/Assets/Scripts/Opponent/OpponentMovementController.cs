@@ -25,6 +25,7 @@ public class OpponentMovementController : MonoBehaviour
     {
         EventManager.OnSceneStart.AddListener( () => isPlaying = false);
         EventManager.OnLevelStart.AddListener( () => isPlaying = true );
+        EventManager.OnLevelStart.AddListener( () => agent.isStopped = false );
         EventManager.OnLevelFail.AddListener( () => isPlaying = false );
         EventManager.OnRaceFinish.AddListener( () => isPlaying = false );
     }
@@ -33,6 +34,7 @@ public class OpponentMovementController : MonoBehaviour
     {
         EventManager.OnSceneStart.RemoveListener( () => isPlaying = false);
         EventManager.OnLevelStart.RemoveListener( () => isPlaying = true );
+        EventManager.OnLevelStart.RemoveListener( () => agent.isStopped = false );
         EventManager.OnLevelFail.RemoveListener( () => isPlaying = false );
         EventManager.OnRaceFinish.RemoveListener( () => isPlaying = false );
     }
@@ -50,7 +52,7 @@ public class OpponentMovementController : MonoBehaviour
         agent.speed = randomSpeed;
         timeRemaining = timer;
         
-        isPlaying = true;      // todo delete after events are enabled
+        // isPlaying = true;      // todo delete after events are enabled
         agent.isStopped = !isPlaying;
         // animationController.CurrentState = OpponentAnimationController.OpponentState.Walking;
     }
