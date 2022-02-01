@@ -48,15 +48,13 @@ public class OpponentMovementController : MonoBehaviour
     {
         finalPoint = GameObject.FindGameObjectWithTag("Finish Line").transform;
         agent?.SetDestination(finalPoint.position);
-        randomSpeed = Random.Range((float)3, (float)6);
+        randomSpeed = Random.Range((float)5, (float)9);
         agent.speed = randomSpeed;
         timeRemaining = timer;      
     }
 
     private void Update()
     {
-        // agent.isStopped = !isPlaying ? true : false;
-
         if (!isPlaying)
         {
             agent.isStopped = true;
@@ -71,7 +69,7 @@ public class OpponentMovementController : MonoBehaviour
 
         if (isTimeDone )
         {
-            randomSpeed = Random.Range((float)3, (float)6);
+            randomSpeed = Random.Range((float)5, (float)9);
             agent.speed = randomSpeed;
             isTimeDone = false;
         }

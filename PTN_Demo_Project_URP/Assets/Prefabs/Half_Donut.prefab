@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4358819829600067416}
   - component: {fileID: 8411265232586444001}
   - component: {fileID: 6963212586447796082}
+  - component: {fileID: 1191275633}
   m_Layer: 0
   m_Name: Half_Donut_Stick
   m_TagString: Untagged
@@ -94,6 +95,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7388368752596093529, guid: c056d0425ef3cd64da86baba3e2b4a26, type: 3}
+--- !u!208 &1191275633
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896656744919706588}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.17, y: 0.010000001, z: 0.010000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0.17, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2197289001435565826
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +123,7 @@ GameObject:
   - component: {fileID: 5253691684402240901}
   - component: {fileID: 6964884140607042655}
   - component: {fileID: 6963212586447796083}
+  - component: {fileID: 1154138029}
   m_Layer: 0
   m_Name: Half_Donut_01
   m_TagString: Untagged
@@ -188,6 +206,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5805732586665943179, guid: c056d0425ef3cd64da86baba3e2b4a26, type: 3}
+--- !u!208 &1154138029
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2197289001435565826}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.096, y: 0.030000001, z: 0.15}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: -0.082, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2527927043976725896
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +266,8 @@ GameObject:
   - component: {fileID: 9214730342129399354}
   - component: {fileID: 9038181434821240601}
   - component: {fileID: 2023629598512657514}
+  - component: {fileID: 60963173}
+  - component: {fileID: 60963171}
   m_Layer: 0
   m_Name: Half_Donut_Side
   m_TagString: Untagged
@@ -300,6 +336,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &60963173
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5762068667467708194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6835447887617772218, guid: c056d0425ef3cd64da86baba3e2b4a26, type: 3}
+--- !u!208 &60963171
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5762068667467708194}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.185, y: 0.568, z: 0.053000003}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: -0.453, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5958558189426298952
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +377,7 @@ GameObject:
   - component: {fileID: 9214209113760885563}
   - component: {fileID: 7899732738924360300}
   - component: {fileID: 855696539101653859}
+  - component: {fileID: 57599687}
   m_Layer: 0
   m_Name: Half_Donut_Sphere
   m_TagString: Untagged
@@ -379,6 +446,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!208 &57599687
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5958558189426298952}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.024, y: 0.024, z: 0.024}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7810127021827344958
 GameObject:
   m_ObjectHideFlags: 0

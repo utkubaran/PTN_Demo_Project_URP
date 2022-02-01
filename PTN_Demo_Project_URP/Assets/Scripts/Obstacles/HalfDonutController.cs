@@ -39,7 +39,7 @@ public class HalfDonutController : MonoBehaviour
 
     private IEnumerator MoveStick()
     {
-        float randomMovementDistance = Random.Range(0f, movementDistance);
+        float randomMovementDistance = Random.Range(movementDistance * 0.5f, movementDistance);
         movingStick.DOMove(movingStick.position + Vector3.left * randomMovementDistance, 0.3f);
         yield return new WaitForSeconds(0.5f);
         movingStick.DOMove(restPosition, 0.5f);
