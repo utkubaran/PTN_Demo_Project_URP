@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4440777047292542793}
   - component: {fileID: 2783280928413965979}
   - component: {fileID: 1828786637}
+  - component: {fileID: 289726319}
+  - component: {fileID: 289726314}
   m_Layer: 0
   m_Name: RotatingStick
   m_TagString: Untagged
@@ -111,6 +113,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!208 &289726319
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2783280928413965980}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.0050000004, y: 0.0050000004, z: 0.053000003}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0.075}
+  m_TimeToStationary: 0.5
+--- !u!114 &289726314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2783280928413965980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1283be450891abb4ba6944884861d7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2783280930053488861
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +155,7 @@ GameObject:
   - component: {fileID: 2783280930053488860}
   - component: {fileID: 919132148311584899}
   - component: {fileID: 799286130386155469}
+  - component: {fileID: 915832628}
   m_Layer: 0
   m_Name: Rotator
   m_TagString: Untagged
@@ -220,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd5f6dec5614d74ab79e34fa58c0342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 50
+  rotationSpeed: 15
 --- !u!208 &799286130386155469
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -237,3 +268,15 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: -0.016, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &915832628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2783280930053488861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1283be450891abb4ba6944884861d7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

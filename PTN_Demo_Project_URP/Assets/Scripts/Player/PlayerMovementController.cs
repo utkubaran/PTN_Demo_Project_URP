@@ -26,7 +26,6 @@ public class PlayerMovementController : MonoBehaviour
         EventManager.OnLevelFail.AddListener( () => isPlaying = false );
         EventManager.OnRaceFinish.AddListener( () => isPlaying = false );
     }
-
     private void OnDisable()
     {
         EventManager.OnLevelStart.RemoveListener( () => isPlaying = true );

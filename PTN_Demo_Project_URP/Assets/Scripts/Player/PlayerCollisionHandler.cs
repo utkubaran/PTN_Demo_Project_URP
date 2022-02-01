@@ -52,13 +52,11 @@ public class PlayerCollisionHandler : MonoBehaviour
     private IEnumerator Respawn()
     {
         playerMovementController.IsPlaying = false;
-        // _rb.isKinematic = false;
         GetComponent<Collider>().enabled = false;
         playerAnimationController.CurrentState = PlayerAnimationController.CharacterState.Falling;
         yield return new WaitForSeconds(respawnTimer);
         playerAnimationController.CurrentState = PlayerAnimationController.CharacterState.Idle;
         GetComponent<Collider>().enabled = true;
-        // _rb.isKinematic = true;
         _transform.position = respawnPoint.position;
         playerMovementController.IsPlaying = true;
     }

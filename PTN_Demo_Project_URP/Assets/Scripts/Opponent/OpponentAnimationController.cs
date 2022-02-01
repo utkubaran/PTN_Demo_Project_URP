@@ -7,7 +7,7 @@ public class OpponentAnimationController : MonoBehaviour
     [SerializeField]
     private Animator opponentAnimator;
 
-    public enum OpponentState { Idle, Walking }
+    public enum OpponentState { Idle, Walking, Falling }
 
     private OpponentState currentState = OpponentState.Idle;
     public OpponentState CurrentState { set { currentState = value; } }
@@ -40,6 +40,9 @@ public class OpponentAnimationController : MonoBehaviour
                 break;
             case OpponentState.Walking:
                 opponentAnimator?.SetBool("isWalking", true);
+                break;
+            case OpponentState.Falling:
+                opponentAnimator?.SetTrigger("isHit");
                 break;
             default:
                 Debug.LogError("NO ANIMATION STATE!");
