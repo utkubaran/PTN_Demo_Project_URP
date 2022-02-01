@@ -48,8 +48,6 @@ public class PlayerMovementController : MonoBehaviour
         _transform = this.transform;
         movementSpeed = playerData.movementSpeed;
         rotationSpeed = playerData.rotationSpeed;
-
-        isPlaying = true;       // todo delete after events are enabled
     }
 
     void Update()

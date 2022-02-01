@@ -10,6 +10,7 @@ public static class EventManager
     public static UnityEvent OnLevelStart = new UnityEvent();
     public static UnityEvent OnLevelFail = new UnityEvent();
     public static UnityEvent OnRaceFinish = new UnityEvent();
+    public static UnityEvent OnPaintFinish = new UnityEvent();
     public static UnityEvent OnSceneFinish = new UnityEvent();
     #endregion
 

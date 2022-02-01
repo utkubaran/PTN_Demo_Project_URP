@@ -33,9 +33,25 @@ public class TexturePainter : MonoBehaviour
 
     private int paintedPixel, oldRayX, oldRayY;
 
-    private float paintedWallPerct;
+    public float PaintedWallPerct { get { return ((float)paintedPixel / (float)(textureSize*textureSize)); } }
 
-    private void OnValidate()
+    private bool canPaint;
+
+    private void OnEnable()
+    {
+        EventManager.OnSceneStart.AddListener( () => canPaint = false );
+        EventManager.OnRaceFinish.AddListener( () => canPaint = true );
+        EventManager.OnSceneFinish.AddListener( () => canPaint = false );
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnSceneStart.RemoveListener( () => canPaint = false );
+        EventManager.OnRaceFinish.RemoveListener( () => canPaint = true );
+        EventManager.OnSceneFinish.RemoveListener( () => canPaint = false );
+    }
+
+    private void Start()
     {
         if (texture == null)
         {
@@ -51,10 +67,13 @@ public class TexturePainter : MonoBehaviour
         texture.filterMode = filterMode;
         material.mainTexture = texture;
         texture.Apply();
+        // Debug.Log(textureSize*textureSize);
     }
     
     private void Update()
     {
+        if (!canPaint) return;
+
         if (Input.GetMouseButton(0))
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
@@ -67,7 +86,6 @@ public class TexturePainter : MonoBehaviour
 
                 if ( oldRayX != rayX || oldRayY != rayY)
                 {
-                    // DrawQuad(rayX, rayY);
                     DrawCircle(rayX, rayY);
                     oldRayX = rayX;
                     oldRayY = rayY;
@@ -77,13 +95,9 @@ public class TexturePainter : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // Debug.Log(paintedPixel);
-            Debug.Log((float)paintedPixel / (float)(textureSize*textureSize));
-        }
-
-        Debug.Log((float)paintedPixel / (float)(textureSize*textureSize));
+        // todo delete
+        Debug.Log(((float)paintedPixel / (float)(textureSize*textureSize)) * 100f);
+        // Debug.Log(paintedPixel);
     }
 
     private void DrawQuad(int rayX, int rayY)
