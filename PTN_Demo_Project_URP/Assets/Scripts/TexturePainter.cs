@@ -155,7 +155,7 @@ public class TexturePainter : MonoBehaviour
 
     private void CheckProgress()
     {
-        if (PaintedWallPerct * 100f >= 99f)
+        if (PaintedWallPerct * 100f > 99.5f)
         {
             EventManager.OnPaintFinish?.Invoke();
             canPaint = false;

@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class CameraMovementController : MonoBehaviour
 {
-    private Vector3 endSceneCamOffset = new Vector3(0f, 10f, 15f);
+    private Vector3 endSceneCamOffset = new Vector3(0f, 5f, 15f);
 
     private CinemachineVirtualCamera virtualCamera;
 
@@ -27,6 +27,9 @@ public class CameraMovementController : MonoBehaviour
 
     private void moveCameraToEndScenePosition()
     {
+        virtualCamera.LookAt = null;
+        transform.DORotate(Vector3.zero, 3f, RotateMode.Fast);
+        // virtualCamera.transform.rotation = Quaternion.Euler(Vector3.zero);
         DOTween.To( () => virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, x => virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = x, endSceneCamOffset, 3f);
     }
 }

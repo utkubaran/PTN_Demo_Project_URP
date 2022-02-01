@@ -30,7 +30,6 @@ public class OpponentCollisionHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("hit!!!!!!");
         bool isObstacle = other.gameObject.GetComponent<Obstacle>();
         
         if (!isObstacle) return;
@@ -42,10 +41,12 @@ public class OpponentCollisionHandler : MonoBehaviour
     {
         opponentMovementController.IsPlaying = false;
         opponentAnimationController.CurrentState = OpponentAnimationController.OpponentState.Idle;
+        GetComponent<Collider>().enabled = false;
         // _rb.isKinematic = false;
         yield return new WaitForSeconds(respawnTimer);
         // _rb.isKinematic = true;
         _transform.position = respawnPoint.position;
+        GetComponent<Collider>().enabled = true;
         opponentMovementController.IsPlaying = true;
         opponentAnimationController.CurrentState = OpponentAnimationController.OpponentState.Walking;
     }

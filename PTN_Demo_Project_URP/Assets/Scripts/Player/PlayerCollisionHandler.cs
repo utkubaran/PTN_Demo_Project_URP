@@ -12,6 +12,8 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     private PlayerMovementController playerMovementController;
 
+    private PlayerAnimationController playerAnimationController;
+
     private Transform _transform, respawnPoint;
 
     private Rigidbody _rb;
@@ -20,6 +22,7 @@ public class PlayerCollisionHandler : MonoBehaviour
     {
         _transform = transform;
         playerMovementController = GetComponent<PlayerMovementController>();
+        playerAnimationController = GetComponent<PlayerAnimationController>();
     }
 
     void Start()
@@ -39,7 +42,6 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("hit!!!!!!");
         bool isObstacle = other.gameObject.GetComponent<Obstacle>();
         
         if (!isObstacle) return;
@@ -50,9 +52,13 @@ public class PlayerCollisionHandler : MonoBehaviour
     private IEnumerator Respawn()
     {
         playerMovementController.IsPlaying = false;
-        _rb.isKinematic = false;
+        // _rb.isKinematic = false;
+        GetComponent<Collider>().enabled = false;
+        playerAnimationController.CurrentState = PlayerAnimationController.CharacterState.Falling;
         yield return new WaitForSeconds(respawnTimer);
-        _rb.isKinematic = true;
+        playerAnimationController.CurrentState = PlayerAnimationController.CharacterState.Idle;
+        GetComponent<Collider>().enabled = true;
+        // _rb.isKinematic = true;
         _transform.position = respawnPoint.position;
         playerMovementController.IsPlaying = true;
     }

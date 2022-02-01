@@ -7,8 +7,6 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField]
     CharacterData playerData;
 
-    private CharacterController characterController;
-
     private PlayerInputController playerInputController;
 
     private PlayerAnimationController playerAnimationController;
@@ -38,7 +36,6 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Awake()
     {
-        characterController = GetComponent<CharacterController>();
         playerInputController = GetComponent<PlayerInputController>();
         playerAnimationController = GetComponent<PlayerAnimationController>();
     }
