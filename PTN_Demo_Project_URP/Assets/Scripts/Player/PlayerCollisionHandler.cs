@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCollisionHandler : MonoBehaviour
 {
     [SerializeField]
-    private float stickCollisionForce;
+    private float stickCollisionForce = 7.5f;
 
     [SerializeField][Range(0f, 2f)]
     private float respawnTimer;
@@ -31,15 +31,6 @@ public class PlayerCollisionHandler : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _rb.isKinematic = false;
-            _rb.AddForce(Vector3.forward * 10f, ForceMode.Impulse);
-        }
-    }
-
     private void OnCollisionEnter(Collision other)
     {
         bool isObstacle = other.gameObject.GetComponent<Obstacle>();
@@ -52,12 +43,11 @@ public class PlayerCollisionHandler : MonoBehaviour
         }
         else if (isRotatingPlatform)
         {
-            Debug.Log("worksssss!");
             this.transform.parent = other.transform;
         }
         else if (isStick)
         {
-            _rb.AddForce(other.contacts[0].normal * 5f, ForceMode.Impulse);
+            _rb.AddForce(other.contacts[0].normal * stickCollisionForce, ForceMode.Impulse);
             StartCoroutine(Respawn());
         }
     }

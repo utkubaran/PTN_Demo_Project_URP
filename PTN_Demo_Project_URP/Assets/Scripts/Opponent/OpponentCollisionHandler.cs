@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class OpponentCollisionHandler : MonoBehaviour
 {
+    [SerializeField]
+    private float stickCollisionForce = 7.5f;
+
     [SerializeField][Range(0f, 2f)]
     private float respawnTimer;
 
@@ -40,12 +43,11 @@ public class OpponentCollisionHandler : MonoBehaviour
         }
         else if (isRotatingPlatform)
         {
-            Debug.Log("worksssss!");
             this.transform.parent = other.transform;
         }
         else if (isStick)
         {
-            _rb.AddForce(other.contacts[0].normal * 2f, ForceMode.Impulse);
+            _rb.AddForce(other.contacts[0].normal * stickCollisionForce, ForceMode.Impulse);
             StartCoroutine(Respawn());
         }
     }
