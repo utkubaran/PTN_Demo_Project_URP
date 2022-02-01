@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpponentCollisionHandler : MonoBehaviour
 {
-[SerializeField][Range(0f, 2f)]
+    [SerializeField][Range(0f, 2f)]
     private float respawnTimer;
 
     private OpponentMovementController opponentMovementController;
@@ -22,16 +22,7 @@ public class OpponentCollisionHandler : MonoBehaviour
     void Start()
     {
         respawnPoint = GameObject.FindGameObjectWithTag("Respawn Point").transform;
-        _rb = GetComponent<Rigidbody>();
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _rb.isKinematic = false;
-            _rb.AddForce(Vector3.forward * 10f, ForceMode.Impulse);
-        }
+        // _rb = GetComponent<Rigidbody>();
     }
 
     private void OnCollisionEnter(Collision other)
@@ -47,9 +38,9 @@ public class OpponentCollisionHandler : MonoBehaviour
     private IEnumerator Respawn()
     {
         opponentMovementController.IsPlaying = false;
-        _rb.isKinematic = false;
+        // _rb.isKinematic = false;
         yield return new WaitForSeconds(respawnTimer);
-        _rb.isKinematic = true;
+        // _rb.isKinematic = true;
         _transform.position = respawnPoint.position;
         opponentMovementController.IsPlaying = true;
     }

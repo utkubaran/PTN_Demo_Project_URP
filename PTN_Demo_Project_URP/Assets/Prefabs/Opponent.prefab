@@ -774,10 +774,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5908364921623914130}
-  - component: {fileID: 5908364921623914125}
   - component: {fileID: 5908364921623914124}
   - component: {fileID: 5908364921623914127}
   - component: {fileID: 5908364921623914126}
+  - component: {fileID: 8452072252569746023}
+  - component: {fileID: 1404651319}
   m_Layer: 7
   m_Name: Opponent
   m_TagString: Opponent
@@ -800,20 +801,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &5908364921623914125
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5908364921623914131}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.64
-  m_Height: 2.4
-  m_Direction: 1
-  m_Center: {x: -0.00078504643, y: 1.1837287, z: -0.13500646}
 --- !u!114 &5908364921623914124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -836,7 +823,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5908364921623914131}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 0.75
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -862,6 +849,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   opponentAnimator: {fileID: 5908364922697171456}
+--- !u!65 &8452072252569746023
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5908364921623914131}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.25, z: 1}
+  m_Center: {x: 0, y: 1.1, z: 0}
+--- !u!114 &1404651319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5908364921623914131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beecf6cbf51c4a9468247e5c16739a89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnTimer: 0.75
 --- !u!1 &6719321466673004374
 GameObject:
   m_ObjectHideFlags: 0

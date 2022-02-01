@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class RankManager : MonoBehaviour
 {
+    public static RankManager instance;
+
     [SerializeField]
     private List<GameObject> participants = new List<GameObject> ();
 
@@ -41,6 +43,10 @@ public class RankManager : MonoBehaviour
         participants = GameObject.FindGameObjectsWithTag("Opponent").ToList();
         player = FindObjectOfType<PlayerMovementController>().gameObject;
         participants.Add(player);
+
+        if (instance != null) return;
+
+        instance = this;
     }
 
     void Start()

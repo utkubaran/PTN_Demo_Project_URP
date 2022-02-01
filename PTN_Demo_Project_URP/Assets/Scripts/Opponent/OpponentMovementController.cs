@@ -48,17 +48,19 @@ public class OpponentMovementController : MonoBehaviour
     {
         finalPoint = GameObject.FindGameObjectWithTag("Finish Line").transform;
         agent?.SetDestination(finalPoint.position);
-        randomSpeed = Random.Range(2, 5);
+        randomSpeed = Random.Range((float)2, (float)5);
         agent.speed = randomSpeed;
-        timeRemaining = timer;
-        
-        // isPlaying = true;      // todo delete after events are enabled
-        agent.isStopped = !isPlaying;
-        // animationController.CurrentState = OpponentAnimationController.OpponentState.Walking;
+        timeRemaining = timer;      
     }
 
     private void Update()
     {
+        if (!isPlaying)
+        {
+            agent.isStopped = true;
+            return;
+        }
+
         CheckTimer();
 
         if (isTimeDone)
