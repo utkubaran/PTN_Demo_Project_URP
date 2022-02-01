@@ -18,7 +18,24 @@ public class OpponentMovementController : MonoBehaviour
 
     private float timer = 1.5f, timeRemaining, randomSpeed;
 
-    private bool isTimeDone;
+    private bool isTimeDone, isPlaying;
+    public bool IsPlaying { set { isPlaying = value; } }
+
+    private void OnEnable()
+    {
+        EventManager.OnSceneStart.AddListener( () => isPlaying = false);
+        EventManager.OnLevelStart.AddListener( () => isPlaying = true );
+        EventManager.OnLevelFail.AddListener( () => isPlaying = false );
+        EventManager.OnRaceFinish.AddListener( () => isPlaying = false );
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnSceneStart.RemoveListener( () => isPlaying = false);
+        EventManager.OnLevelStart.RemoveListener( () => isPlaying = true );
+        EventManager.OnLevelFail.RemoveListener( () => isPlaying = false );
+        EventManager.OnRaceFinish.RemoveListener( () => isPlaying = false );
+    }
 
     private void Awake()
     {
@@ -32,6 +49,9 @@ public class OpponentMovementController : MonoBehaviour
         randomSpeed = Random.Range(2, 5);
         agent.speed = randomSpeed;
         timeRemaining = timer;
+        
+        isPlaying = true;      // todo delete after events are enabled
+        agent.isStopped = !isPlaying;
         // animationController.CurrentState = OpponentAnimationController.OpponentState.Walking;
     }
 

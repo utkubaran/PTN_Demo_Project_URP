@@ -16,6 +16,7 @@ public class PlayerMovementController : MonoBehaviour
     private float movementSpeed, rotationSpeed;
 
     private bool isPlaying;
+    public bool IsPlaying { set { isPlaying = value; } }
 
     private Vector3 movementDirection;
 

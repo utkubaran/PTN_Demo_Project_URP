@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCollisionHandler : MonoBehaviour
+public class OpponentCollisionHandler : MonoBehaviour
 {
-    [SerializeField]
-    private float stickCollisionForce;
-
-    [SerializeField][Range(0f, 2f)]
+[SerializeField][Range(0f, 2f)]
     private float respawnTimer;
 
-    private PlayerMovementController playerMovementController;
+    private OpponentMovementController opponentMovementController;
 
     private Transform _transform, respawnPoint;
 
@@ -19,7 +16,7 @@ public class PlayerCollisionHandler : MonoBehaviour
     private void Awake()
     {
         _transform = transform;
-        playerMovementController = GetComponent<PlayerMovementController>();
+        opponentMovementController = GetComponent<OpponentMovementController>();
     }
 
     void Start()
@@ -49,11 +46,11 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     private IEnumerator Respawn()
     {
-        playerMovementController.IsPlaying = false;
+        opponentMovementController.IsPlaying = false;
         _rb.isKinematic = false;
         yield return new WaitForSeconds(respawnTimer);
         _rb.isKinematic = true;
         _transform.position = respawnPoint.position;
-        playerMovementController.IsPlaying = true;
+        opponentMovementController.IsPlaying = true;
     }
 }
