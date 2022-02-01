@@ -9,6 +9,8 @@ public class OpponentCollisionHandler : MonoBehaviour
 
     private OpponentMovementController opponentMovementController;
 
+    private OpponentAnimationController opponentAnimationController;
+
     private Transform _transform, respawnPoint;
 
     private Rigidbody _rb;
@@ -17,6 +19,7 @@ public class OpponentCollisionHandler : MonoBehaviour
     {
         _transform = transform;
         opponentMovementController = GetComponent<OpponentMovementController>();
+        opponentAnimationController = GetComponent<OpponentAnimationController>();
     }
 
     void Start()
@@ -38,10 +41,12 @@ public class OpponentCollisionHandler : MonoBehaviour
     private IEnumerator Respawn()
     {
         opponentMovementController.IsPlaying = false;
+        opponentAnimationController.CurrentState = OpponentAnimationController.OpponentState.Idle;
         // _rb.isKinematic = false;
         yield return new WaitForSeconds(respawnTimer);
         // _rb.isKinematic = true;
         _transform.position = respawnPoint.position;
         opponentMovementController.IsPlaying = true;
+        opponentAnimationController.CurrentState = OpponentAnimationController.OpponentState.Walking;
     }
 }

@@ -16,12 +16,14 @@ public class OpponentAnimationController : MonoBehaviour
     {
         EventManager.OnSceneStart.AddListener( () => currentState = OpponentState.Idle );
         EventManager.OnLevelStart.AddListener( () => currentState = OpponentState.Walking );
+        EventManager.OnRaceFinish.AddListener( () => currentState = OpponentState.Idle );
     }
 
     private void OnDisable()
     {
         EventManager.OnSceneStart.RemoveListener( () => currentState = OpponentState.Idle );
         EventManager.OnLevelStart.RemoveListener( () => currentState = OpponentState.Walking );
+        EventManager.OnRaceFinish.RemoveListener( () => currentState = OpponentState.Idle );
     }
 
     void LateUpdate()
