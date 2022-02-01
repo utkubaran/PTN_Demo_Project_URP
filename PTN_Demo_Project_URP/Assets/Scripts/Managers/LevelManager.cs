@@ -11,11 +11,13 @@ public class LevelManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnTapToPlayButtonPressed.AddListener(StartGameplay);
+        EventManager.OnPlayButtonPressed.AddListener(LoadSameScene);
     }
 
     private void OnDisable()
     {
         EventManager.OnTapToPlayButtonPressed.RemoveListener(StartGameplay);
+        EventManager.OnPlayButtonPressed.RemoveListener(LoadSameScene);
     }
     
     private void Awake()
@@ -32,5 +34,10 @@ public class LevelManager : MonoBehaviour
     private void StartGameplay()
     {
         EventManager.OnLevelStart?.Invoke();
+    }
+
+    private void LoadSameScene()
+    {
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }

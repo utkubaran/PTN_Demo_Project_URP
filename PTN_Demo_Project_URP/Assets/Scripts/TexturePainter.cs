@@ -40,14 +40,14 @@ public class TexturePainter : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnSceneStart.AddListener( () => canPaint = false );
-        EventManager.OnRaceFinish.AddListener( () => canPaint = true );
+        EventManager.OnRaceFinish.AddListener(EnablePaintingWithDelay);
         EventManager.OnSceneFinish.AddListener( () => canPaint = false );
     }
 
     private void OnDisable()
     {
         EventManager.OnSceneStart.RemoveListener( () => canPaint = false );
-        EventManager.OnRaceFinish.RemoveListener( () => canPaint = true );
+        EventManager.OnRaceFinish.RemoveListener(EnablePaintingWithDelay);
         EventManager.OnSceneFinish.RemoveListener( () => canPaint = false );
     }
 
@@ -67,13 +67,18 @@ public class TexturePainter : MonoBehaviour
         texture.filterMode = filterMode;
         material.mainTexture = texture;
         texture.Apply();
-        // Debug.Log(textureSize*textureSize);
     }
     
     private void Update()
     {
         if (!canPaint) return;
 
+        PaintWall();
+        CheckProgress();
+    }
+
+    private void PaintWall()
+    {
         if (Input.GetMouseButton(0))
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
@@ -94,10 +99,6 @@ public class TexturePainter : MonoBehaviour
                 texture.Apply();
             }
         }
-
-        // todo delete
-        Debug.Log(((float)paintedPixel / (float)(textureSize*textureSize)) * 100f);
-        // Debug.Log(paintedPixel);
     }
 
     private void DrawQuad(int rayX, int rayY)
@@ -129,7 +130,6 @@ public class TexturePainter : MonoBehaviour
                     if (pixelX >= 0 && pixelX < textureSize && pixelY >= 0 &&  pixelY < textureSize)
                     {
                         Color oldColor = texture.GetPixel(pixelX, pixelY);
-                        // Color resultColor = Color.Lerp(oldColor, _color, _color.a);
 
                         if (oldColor != _color)
                         {
@@ -141,4 +141,25 @@ public class TexturePainter : MonoBehaviour
             }
         }
     }
+
+    private void EnablePaintingWithDelay()
+    {
+        StartCoroutine(EnablePainting());
+    }
+    
+    private IEnumerator EnablePainting()
+    {
+        yield return new WaitForSeconds(4f);
+        canPaint = true;
+    }
+
+    private void CheckProgress()
+    {
+        if (PaintedWallPerct * 100f >= 99f)
+        {
+            EventManager.OnPaintFinish?.Invoke();
+            canPaint = false;
+        }
+    }
+
 }

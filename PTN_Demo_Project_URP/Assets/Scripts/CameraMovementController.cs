@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class CameraMovementController : MonoBehaviour
 {
-    private Vector3 endSceneCamOffset = new Vector3(0.7f, 10f, 15f);
+    private Vector3 endSceneCamOffset = new Vector3(0f, 10f, 15f);
 
     private CinemachineVirtualCamera virtualCamera;
 

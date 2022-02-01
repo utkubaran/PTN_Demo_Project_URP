@@ -21,6 +21,7 @@ public static class EventManager
 
     #region Button Events
     public static UnityEvent OnTapToPlayButtonPressed = new UnityEvent();
+    public static UnityEvent OnPlayButtonPressed = new UnityEvent();
     #endregion
 }
 
