@@ -33,6 +33,8 @@ public class TexturePainter : MonoBehaviour
 
     private int paintedPixel, oldRayX, oldRayY;
 
+    private float paintedWallPerct;
+
     private void OnValidate()
     {
         if (texture == null)
@@ -53,8 +55,6 @@ public class TexturePainter : MonoBehaviour
     
     private void Update()
     {
-        // _brushSize += (int)Input.mouseScrollDelta.y;
-
         if (Input.GetMouseButton(0))
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
@@ -74,10 +74,16 @@ public class TexturePainter : MonoBehaviour
                 }
 
                 texture.Apply();
-                // if (texture.GetPixel(rayX, rayY) == Color.red)
-                // texture.SetPixel(rayX, rayY, _color);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // Debug.Log(paintedPixel);
+            Debug.Log((float)paintedPixel / (float)(textureSize*textureSize));
+        }
+
+        Debug.Log((float)paintedPixel / (float)(textureSize*textureSize));
     }
 
     private void DrawQuad(int rayX, int rayY)
@@ -109,9 +115,13 @@ public class TexturePainter : MonoBehaviour
                     if (pixelX >= 0 && pixelX < textureSize && pixelY >= 0 &&  pixelY < textureSize)
                     {
                         Color oldColor = texture.GetPixel(pixelX, pixelY);
-                        Color resultColor = Color.Lerp(oldColor, _color, _color.a);
+                        // Color resultColor = Color.Lerp(oldColor, _color, _color.a);
 
-                        texture.SetPixel(rayX + x - _brushSize / 2, rayY + y - _brushSize / 2, resultColor);
+                        if (oldColor != _color)
+                        {
+                            texture.SetPixel(rayX + x - _brushSize / 2, rayY + y - _brushSize / 2, _color);
+                            paintedPixel++;
+                        }
                     }
                 }
             }
