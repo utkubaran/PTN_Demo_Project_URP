@@ -6,17 +6,17 @@ using UnityEngine.AI;
 public class OpponentMovementController : MonoBehaviour
 {
     [SerializeField]
-    private CharacterData opponentData;
+    private float xBorder;
 
     private NavMeshAgent agent;
 
     private OpponentAnimationController animationController;
 
-    private Transform finalPoint;
+    private Transform _transform, finalPoint;
 
     public float OpponentVelocity { get { return agent.velocity.magnitude; } }
 
-    private float timer = 1.5f, timeRemaining, randomSpeed;
+    private float timer = 1.5f, timeRemaining, randomSpeed, horizontalPos;
 
     private bool isTimeDone, isPlaying;
     public bool IsPlaying { set { isPlaying = value; } }
@@ -42,6 +42,7 @@ public class OpponentMovementController : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        _transform = transform;
     }
 
     void Start()
@@ -66,8 +67,10 @@ public class OpponentMovementController : MonoBehaviour
         }
 
         CheckTimer();
+        horizontalPos = Mathf.Clamp(_transform.position.x, -xBorder, xBorder);
+        transform.position = new Vector3(horizontalPos, _transform.position.y, _transform.position.z);
 
-        if (isTimeDone )
+        if (isTimeDone)
         {
             randomSpeed = Random.Range((float)5, (float)9);
             agent.speed = randomSpeed;

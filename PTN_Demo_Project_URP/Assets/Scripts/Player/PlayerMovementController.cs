@@ -7,11 +7,14 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField]
     CharacterData playerData;
 
+    [SerializeField]
+    private float xBorder;
+
     private PlayerInputController playerInputController;
 
     private PlayerAnimationController playerAnimationController;
 
-    private float movementSpeed, rotationSpeed;
+    private float movementSpeed, swerveSpeed, rotationSpeed, horizontalPos, verticalPos;
 
     private bool isPlaying;
     public bool IsPlaying { set { isPlaying = value; } }
@@ -44,37 +47,38 @@ public class PlayerMovementController : MonoBehaviour
     {
         _transform = this.transform;
         movementSpeed = playerData.movementSpeed;
+        swerveSpeed = playerData.swerveSpeed;
         rotationSpeed = playerData.rotationSpeed;
     }
 
     void Update()
     {
         MovePlayer();
-        RotatePlayer();
+        // RotatePlayer();
     }
 
     private void MovePlayer()
     {
-        if (playerAnimationController == null || playerInputController == null) return;
+        if (playerAnimationController == null || playerInputController == null || !isPlaying) return;
 
         movementDirection = playerInputController.MovementDirection;
 
-        if (movementDirection.magnitude >= 0.1f && isPlaying)
+        if (movementDirection.magnitude >= 0.1f)
         {
-            // characterController.Move(movementDirection.normalized * Time.deltaTime * movementSpeed);
-            transform.position += movementDirection.normalized * movementSpeed * Time.deltaTime;
+            horizontalPos = Mathf.Clamp(movementDirection.normalized.x * swerveSpeed * Time.deltaTime + _transform.position.x, -xBorder, xBorder);
             playerAnimationController.CurrentState = PlayerAnimationController.CharacterState.Walking;
         }
-        else
-        {
-            playerAnimationController.CurrentState = PlayerAnimationController.CharacterState.Idle;
-        }
+
+        verticalPos = movementSpeed * Time.deltaTime + _transform.position.z;
+        Vector3 movementVector = new Vector3(horizontalPos, 0f, verticalPos);
+        _transform.position = movementVector;
+        
     }
 
     private void RotatePlayer()
     {
         if ( movementDirection.magnitude == 0f || !isPlaying) return;
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(movementDirection.normalized), rotationSpeed);
+        _transform.rotation = Quaternion.Lerp(_transform.rotation, Quaternion.LookRotation(movementDirection.normalized), rotationSpeed);
     }
 }

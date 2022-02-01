@@ -22,7 +22,7 @@ public class PlayerInputController : MonoBehaviour
         else if (Input.GetMouseButton(0))
         {
             finalPos = Input.mousePosition;
-            movementDirection = new Vector3(finalPos.x - startPos.x, 0f, finalPos.y - startPos.y);
+            movementDirection = new Vector3(finalPos.x - startPos.x, 0f, 0f);
         }
         else if (Input.GetMouseButtonUp(0))
         {

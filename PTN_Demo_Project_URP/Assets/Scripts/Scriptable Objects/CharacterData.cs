@@ -6,6 +6,8 @@ using UnityEngine;
 public class CharacterData : ScriptableObject
 {
     public float movementSpeed;
+
+    public float swerveSpeed;
     
     public float rotationSpeed;
 }

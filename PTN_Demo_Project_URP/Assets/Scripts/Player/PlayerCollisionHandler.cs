@@ -44,8 +44,8 @@ public class PlayerCollisionHandler : MonoBehaviour
     {
         bool isObstacle = other.gameObject.GetComponent<Obstacle>();
         bool isRotatingPlatform = other.gameObject.GetComponent<RotatingPlatformController>();
+        bool isStick = other.gameObject.GetComponent<Stick>();
 
-        
         if (isObstacle)
         {
             StartCoroutine(Respawn());
@@ -54,6 +54,11 @@ public class PlayerCollisionHandler : MonoBehaviour
         {
             Debug.Log("worksssss!");
             this.transform.parent = other.transform;
+        }
+        else if (isStick)
+        {
+            _rb.AddForce(other.contacts[0].normal * 5f, ForceMode.Impulse);
+            StartCoroutine(Respawn());
         }
     }
 

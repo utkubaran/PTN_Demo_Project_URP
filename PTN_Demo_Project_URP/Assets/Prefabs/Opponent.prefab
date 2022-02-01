@@ -814,7 +814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b799915eed1e04795130728f748ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  opponentData: {fileID: 0}
+  xBorder: 7
 --- !u!195 &5908364921623914127
 NavMeshAgent:
   m_ObjectHideFlags: 0

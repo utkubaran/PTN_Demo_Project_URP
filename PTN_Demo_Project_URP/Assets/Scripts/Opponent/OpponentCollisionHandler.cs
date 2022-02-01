@@ -13,11 +13,14 @@ public class OpponentCollisionHandler : MonoBehaviour
 
     private Transform _transform, respawnPoint;
 
+    private Rigidbody _rb;
+
     private void Awake()
     {
         _transform = transform;
-        opponentMovementController = GetComponent<OpponentMovementController>();
-        opponentAnimationController = GetComponent<OpponentAnimationController>();
+        opponentMovementController = this.GetComponent<OpponentMovementController>();
+        opponentAnimationController = this.GetComponent<OpponentAnimationController>();
+        _rb = this.GetComponent<Rigidbody>();
     }
 
     void Start()
@@ -28,10 +31,32 @@ public class OpponentCollisionHandler : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         bool isObstacle = other.gameObject.GetComponent<Obstacle>();
-        
-        if (!isObstacle) return;
-        
-        StartCoroutine(Respawn());
+        bool isRotatingPlatform = other.gameObject.GetComponent<RotatingPlatformController>();
+        bool isStick = other.gameObject.GetComponent<Stick>();
+
+        if (isObstacle)
+        {
+            StartCoroutine(Respawn());
+        }
+        else if (isRotatingPlatform)
+        {
+            Debug.Log("worksssss!");
+            this.transform.parent = other.transform;
+        }
+        else if (isStick)
+        {
+            _rb.AddForce(other.contacts[0].normal * 2f, ForceMode.Impulse);
+            StartCoroutine(Respawn());
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        bool isRotatingPlatform = other.gameObject.GetComponent<RotatingPlatformController>();
+
+        if (!isRotatingPlatform) return;
+
+        this.transform.parent = null;
     }
 
     private IEnumerator Respawn()
