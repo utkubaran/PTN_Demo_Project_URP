@@ -7,7 +7,7 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
-    public enum CharacterState { Idle, Walking, Falling }
+    public enum CharacterState { Idle, Walking }
 
     private CharacterState currentState = CharacterState.Idle;
     public CharacterState CurrentState { set { currentState = value; } }
@@ -36,9 +36,6 @@ public class PlayerAnimationController : MonoBehaviour
                 break;
             case CharacterState.Walking:
                 animator?.SetBool("isWalking", true);
-                break;
-            case CharacterState.Falling:
-                animator?.SetTrigger("isHit");
                 break;
             default:
                 Debug.LogError("NO ANIMATION STATE!");

@@ -26,6 +26,7 @@ public class PlayerMovementController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnLevelStart.AddListener( () => isPlaying = true );
+        EventManager.OnLevelStart.AddListener( () => playerAnimationController.CurrentState = PlayerAnimationController.CharacterState.Walking );
         EventManager.OnLevelFail.AddListener( () => isPlaying = false );
         EventManager.OnRaceFinish.AddListener( () => isPlaying = false );
     }
@@ -33,6 +34,7 @@ public class PlayerMovementController : MonoBehaviour
     private void OnDisable()
     {
         EventManager.OnLevelStart.RemoveListener( () => isPlaying = true );
+        EventManager.OnLevelStart.RemoveListener( () => playerAnimationController.CurrentState = PlayerAnimationController.CharacterState.Walking );
         EventManager.OnLevelFail.RemoveListener( () => isPlaying = false );
         EventManager.OnRaceFinish.RemoveListener( () => isPlaying = false );
     }
@@ -66,7 +68,6 @@ public class PlayerMovementController : MonoBehaviour
         if (movementDirection.magnitude >= 0.1f)
         {
             horizontalPos = Mathf.Clamp(movementDirection.normalized.x * swerveSpeed * Time.deltaTime + _transform.position.x, -xBorder, xBorder);
-            playerAnimationController.CurrentState = PlayerAnimationController.CharacterState.Walking;
         }
 
         verticalPos = movementSpeed * Time.deltaTime + _transform.position.z;

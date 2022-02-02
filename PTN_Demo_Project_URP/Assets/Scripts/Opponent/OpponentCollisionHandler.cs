@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class OpponentCollisionHandler : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class OpponentCollisionHandler : MonoBehaviour
 
     private OpponentAnimationController opponentAnimationController;
 
+    private NavMeshAgent agent;
+
     private Transform _transform, respawnPoint;
 
     private Rigidbody _rb;
@@ -24,6 +27,7 @@ public class OpponentCollisionHandler : MonoBehaviour
         opponentMovementController = this.GetComponent<OpponentMovementController>();
         opponentAnimationController = this.GetComponent<OpponentAnimationController>();
         _rb = this.GetComponent<Rigidbody>();
+        agent = this.GetComponent<NavMeshAgent>();
     }
 
     void Start()
@@ -63,13 +67,14 @@ public class OpponentCollisionHandler : MonoBehaviour
 
     private IEnumerator Respawn()
     {
-        opponentMovementController.IsPlaying = false;
+        agent.isStopped = true;
+        // opponentMovementController.IsPlaying = false;
         GetComponent<Collider>().enabled = false;
-        opponentAnimationController.CurrentState = OpponentAnimationController.OpponentState.Falling;
         yield return new WaitForSeconds(respawnTimer);
-        opponentAnimationController.CurrentState = OpponentAnimationController.OpponentState.Idle;
         _transform.position = respawnPoint.position;
         GetComponent<Collider>().enabled = true;
-        opponentMovementController.IsPlaying = true;
+        // opponentMovementController.IsPlaying = true;
+        // agent.SetDestination(GameObject.FindGameObjectWithTag("Finish Line").transform.position);
+        agent.isStopped = false;
     }
 }

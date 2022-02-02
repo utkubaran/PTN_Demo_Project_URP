@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1511518581755627124}
   - component: {fileID: 8554294483193318012}
   - component: {fileID: 9084068772175240793}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Static Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

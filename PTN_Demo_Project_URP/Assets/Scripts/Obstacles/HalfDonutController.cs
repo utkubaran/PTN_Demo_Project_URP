@@ -19,8 +19,7 @@ public class HalfDonutController : MonoBehaviour
 
     void Start()
     {
-        timer = Random.Range(3f, 7f);
-        timer = 1f;
+        timer = Random.Range(5f, 10f);
         timeRemaining = timer;
         isTimeDone = false;
         restPosition = movingStick.position;
@@ -39,7 +38,7 @@ public class HalfDonutController : MonoBehaviour
 
     private IEnumerator MoveStick()
     {
-        float randomMovementDistance = Random.Range(movementDistance * 0.5f, movementDistance);
+        float randomMovementDistance = Random.Range(movementDistance * 0.25f, movementDistance * 0.7f);
         movingStick.DOMove(movingStick.position + Vector3.left * randomMovementDistance, 0.3f);
         yield return new WaitForSeconds(0.5f);
         movingStick.DOMove(restPosition, 0.5f);
@@ -51,7 +50,7 @@ public class HalfDonutController : MonoBehaviour
 
         if (timeRemaining > 0) return;
 
-        timer = Random.Range(3f, 7f);
+        timer = Random.Range(5f, 10f);
         timeRemaining = timer;
         isTimeDone = true;
     }

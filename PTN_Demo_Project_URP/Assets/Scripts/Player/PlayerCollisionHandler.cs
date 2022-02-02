@@ -65,9 +65,7 @@ public class PlayerCollisionHandler : MonoBehaviour
     {
         playerMovementController.IsPlaying = false;
         GetComponent<Collider>().enabled = false;
-        playerAnimationController.CurrentState = PlayerAnimationController.CharacterState.Falling;
         yield return new WaitForSeconds(respawnTimer);
-        playerAnimationController.CurrentState = PlayerAnimationController.CharacterState.Idle;
         GetComponent<Collider>().enabled = true;
         _transform.position = respawnPoint.position;
         playerMovementController.IsPlaying = true;

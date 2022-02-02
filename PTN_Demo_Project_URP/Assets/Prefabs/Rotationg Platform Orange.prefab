@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 525858545379656013}
   - component: {fileID: 1192798791063297479}
   - component: {fileID: 2053241581}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rotationg Platform Orange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,4 +107,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae4b37375234c3e4e9f770e05fa2f779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 10
+  rotationSpeed: 5

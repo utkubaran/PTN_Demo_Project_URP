@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     private int currentSceneIndex;
-    public int CurrentSceneIndex { get { return currentSceneIndex; } }
 
     private void OnEnable()
     {
@@ -22,8 +21,8 @@ public class LevelManager : MonoBehaviour
     
     private void Awake()
     {
+        Screen.SetResolution(1080, 1920, true);     // for windows build portrait mode
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        EventManager.OnSceneStart?.Invoke();
     }
 
     private void Start()

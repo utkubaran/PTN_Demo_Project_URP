@@ -19,7 +19,6 @@ public class OpponentMovementController : MonoBehaviour
     private float timer = 1.5f, timeRemaining, randomSpeed, horizontalPos;
 
     private bool isTimeDone, isPlaying;
-    public bool IsPlaying { set { isPlaying = value; } }
 
     private void OnEnable()
     {
@@ -51,7 +50,8 @@ public class OpponentMovementController : MonoBehaviour
         agent?.SetDestination(finalPoint.position);
         randomSpeed = Random.Range((float)5, (float)9);
         agent.speed = randomSpeed;
-        timeRemaining = timer;      
+        timeRemaining = timer;
+        isPlaying = false;
     }
 
     private void Update()
@@ -70,12 +70,14 @@ public class OpponentMovementController : MonoBehaviour
         horizontalPos = Mathf.Clamp(_transform.position.x, -xBorder, xBorder);
         transform.position = new Vector3(horizontalPos, _transform.position.y, _transform.position.z);
 
+        /*
         if (isTimeDone)
         {
             randomSpeed = Random.Range((float)5, (float)9);
             agent.speed = randomSpeed;
             isTimeDone = false;
         }
+        */
     }
 
     private void CheckTimer()
