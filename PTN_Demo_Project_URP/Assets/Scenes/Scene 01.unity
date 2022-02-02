@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -235,6 +235,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rotationg Platform Purple
       objectReference: {fileID: 0}
+    - target: {fileID: 8661468623679421960, guid: 2af72105671a5254eb96a20d7025b6f4,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9203403462000712165, guid: 2af72105671a5254eb96a20d7025b6f4,
         type: 3}
       propertyPath: m_RootOrder
@@ -315,7 +320,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -9026691190347106219, guid: a54c8b2c2b367bf4db03660d6642b6b0, type: 3}
 --- !u!1001 &67587947
@@ -557,7 +562,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -9026691190347106219, guid: a54c8b2c2b367bf4db03660d6642b6b0, type: 3}
 --- !u!1 &227621361
@@ -1514,7 +1519,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 350}
+  m_AnchoredPosition: {x: 0, y: 250}
   m_SizeDelta: {x: 450, y: 200}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &390178072
@@ -1903,7 +1908,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -550}
+  m_AnchoredPosition: {x: 0, y: -250}
   m_SizeDelta: {x: 1080, y: 400}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &433210064
@@ -2197,7 +2202,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -9026691190347106219, guid: a54c8b2c2b367bf4db03660d6642b6b0, type: 3}
 --- !u!1001 &536718698
@@ -2422,7 +2427,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -9026691190347106219, guid: a54c8b2c2b367bf4db03660d6642b6b0, type: 3}
 --- !u!1 &738963648
@@ -2536,7 +2541,7 @@ PrefabInstance:
     - target: {fileID: 6264784854320376899, guid: b95e909cc9b5dd0458ec97d602fb89c2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 280.4
+      value: 279.4
       objectReference: {fileID: 0}
     - target: {fileID: 6264784854320376899, guid: b95e909cc9b5dd0458ec97d602fb89c2,
         type: 3}
@@ -3245,6 +3250,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 132585332}
     m_Modifications:
+    - target: {fileID: 1192798791063297479, guid: b93d1127c8b9525418099a6868d92434,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1659318434932636194, guid: b93d1127c8b9525418099a6868d92434,
         type: 3}
       propertyPath: m_RootOrder
@@ -3370,7 +3380,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -9026691190347106219, guid: a54c8b2c2b367bf4db03660d6642b6b0, type: 3}
 --- !u!1 &1140575856 stripped
@@ -3390,7 +3400,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -9026691190347106219, guid: a54c8b2c2b367bf4db03660d6642b6b0, type: 3}
 --- !u!1001 &1190529687
@@ -3576,11 +3586,11 @@ RectTransform:
   m_Father: {fileID: 1728751483}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 250}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -250}
   m_SizeDelta: {x: 1000, y: 500}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1255566211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3707,7 +3717,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273711778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 302}
+  m_LocalPosition: {x: 0, y: 5, z: 301}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 132585332}
@@ -4466,6 +4476,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3227537725016585644, guid: 553551be01a80a347bd923deb6afcdec,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 553551be01a80a347bd923deb6afcdec, type: 3}
 --- !u!1001 &1750553521
@@ -4986,7 +5001,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -9026691190347106219, guid: a54c8b2c2b367bf4db03660d6642b6b0, type: 3}
 --- !u!1001 &1937659942
@@ -5305,7 +5320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 350}
+  m_AnchoredPosition: {x: 0, y: 250}
   m_SizeDelta: {x: 450, y: 200}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2075005044
@@ -5710,6 +5725,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8829166478263390208, guid: 52c87d484e9f25345bcfb80b8445fed2,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 8829166478263390217, guid: 52c87d484e9f25345bcfb80b8445fed2,
         type: 3}
       propertyPath: m_Name

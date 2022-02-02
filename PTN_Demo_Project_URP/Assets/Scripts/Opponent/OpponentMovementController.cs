@@ -27,6 +27,7 @@ public class OpponentMovementController : MonoBehaviour
         EventManager.OnLevelStart.AddListener( () => agent.isStopped = false );
         EventManager.OnLevelFail.AddListener( () => isPlaying = false );
         EventManager.OnRaceFinish.AddListener( () => isPlaying = false );
+        EventManager.OnRaceFinish.AddListener( () => this.gameObject.SetActive(false) );
     }
 
     private void OnDisable()
@@ -36,6 +37,7 @@ public class OpponentMovementController : MonoBehaviour
         EventManager.OnLevelStart.RemoveListener( () => agent.isStopped = false );
         EventManager.OnLevelFail.RemoveListener( () => isPlaying = false );
         EventManager.OnRaceFinish.RemoveListener( () => isPlaying = false );
+        EventManager.OnRaceFinish.RemoveListener( () => this.gameObject.SetActive(false) );
     }
 
     private void Awake()

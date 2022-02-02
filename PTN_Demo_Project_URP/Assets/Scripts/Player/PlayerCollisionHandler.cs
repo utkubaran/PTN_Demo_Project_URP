@@ -43,7 +43,7 @@ public class PlayerCollisionHandler : MonoBehaviour
         }
         else if (isRotatingPlatform)
         {
-            this.transform.parent = other.transform;
+            _transform.parent = other.transform;
         }
         else if (isStick)
         {
@@ -58,6 +58,7 @@ public class PlayerCollisionHandler : MonoBehaviour
 
         if (!isRotatingPlatform) return;
 
+        _transform.rotation = Quaternion.Euler(Vector3.zero);
         this.transform.parent = null;
     }
 

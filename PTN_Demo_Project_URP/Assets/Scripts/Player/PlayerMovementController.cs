@@ -56,7 +56,6 @@ public class PlayerMovementController : MonoBehaviour
     void Update()
     {
         MovePlayer();
-        // RotatePlayer();
     }
 
     private void MovePlayer()
