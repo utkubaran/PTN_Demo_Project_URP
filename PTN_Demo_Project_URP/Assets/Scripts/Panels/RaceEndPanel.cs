@@ -38,7 +38,6 @@ public class RaceEndPanel : MonoBehaviour
 
     private IEnumerator ActivateInstructionText()
     {
-        Debug.Log("works");
         instructionText.SetActive(true);
         yield return new WaitForSeconds(2f);
         instructionText.SetActive(false);
