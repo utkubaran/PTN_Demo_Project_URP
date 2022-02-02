@@ -48,7 +48,7 @@ public class OpponentMovementController : MonoBehaviour
     {
         finalPoint = GameObject.FindGameObjectWithTag("Finish Line").transform;
         agent?.SetDestination(finalPoint.position);
-        randomSpeed = Random.Range((float)5, (float)9);
+        randomSpeed = Random.Range((float)5, (float)7);
         agent.speed = randomSpeed;
         timeRemaining = timer;
         isPlaying = false;
@@ -69,15 +69,6 @@ public class OpponentMovementController : MonoBehaviour
         CheckTimer();
         horizontalPos = Mathf.Clamp(_transform.position.x, -xBorder, xBorder);
         transform.position = new Vector3(horizontalPos, _transform.position.y, _transform.position.z);
-
-        /*
-        if (isTimeDone)
-        {
-            randomSpeed = Random.Range((float)5, (float)9);
-            agent.speed = randomSpeed;
-            isTimeDone = false;
-        }
-        */
     }
 
     private void CheckTimer()
@@ -88,5 +79,15 @@ public class OpponentMovementController : MonoBehaviour
 
         timeRemaining = timer;
         isTimeDone = true;
+    }
+    
+    private void ChangeAgentSpeed()
+    {
+        if (isTimeDone)
+        {
+            randomSpeed = Random.Range((float)5, (float)7);
+            agent.speed = randomSpeed;
+            isTimeDone = false;
+        }
     }
 }
